@@ -15,11 +15,16 @@ def initialize_beliefs(grid):
     return beliefs
 
 def sense(color, grid, beliefs, p_hit, p_miss):
-    new_beliefs = []
+    height = len(grid)
+    width = len(grid[0])
+    new_beliefs = [[0.0 for i in range(width)] for j in range(height)]
 
-    #
-    # TODO - implement this in part 2
-    #
+    for i, row in enumerate(beliefs):
+        for j, cell in enumerate(row):
+            if (color == grid[i][j]):
+                new_beliefs[i][j] = cell * p_hit
+            else:
+                new_beliefs[i][j] = cell * p_miss
 
     return new_beliefs
 
